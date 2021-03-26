@@ -18,7 +18,7 @@ steps:
     script: |
       # Write your PowerShell commands here.
 
-      Write-Host "pepe"
+      Write-Host "$(test)"
       #$PAT = "INSERT PAT"
       #$url = "https://dev.azure.com/matiasd0832/NewPracticeProject/_apis/wit/workitems?ids=352,353,354&api-version=6.0"
       #$user = ""
