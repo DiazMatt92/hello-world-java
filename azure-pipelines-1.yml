@@ -17,7 +17,7 @@ steps:
     targetType: 'inline'
     script: |
       # Write your PowerShell commands here.
-      
+      Write-Host Get-Date
       Write-Host "Hello World"
 - script: |
     echo Add other tasks to build, test, and deploy your project.
