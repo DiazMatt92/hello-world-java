@@ -28,7 +28,7 @@ steps:
 
       $response = Invoke-RestMethod -Method Get -Headers $header -Uri $url
 
-      $response | ConvertTo-Json
+      #$response | ConvertTo-Json
 
       $response.value.fields
 - script: |
