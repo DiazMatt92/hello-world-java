@@ -17,7 +17,8 @@ steps:
     targetType: 'inline'
     script: |
       # Write your PowerShell commands here.
-      Write-Host Get-Date
+      $fecha = Get-Date
+      Write-Host $fecha "es la fecha actual"
       Write-Host "Hello World"
 - script: |
     echo Add other tasks to build, test, and deploy your project.
