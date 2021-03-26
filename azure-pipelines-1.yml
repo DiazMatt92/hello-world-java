@@ -18,10 +18,10 @@ steps:
     script: |
       # Write your PowerShell commands here.
       $fecha = Get-Date
-      $azpurl = Env:AZP_URL
-      Write-Host $fecha "es la fecha actual"
-      Write-Host "Hello World"
-      Write-Host $azpurl
+      $PAT = "vfe5wmddwpun3azwicjnpjna4jampo32hfsx6uqt7h3u3fvmwm4a"
+      $url = "https://dev.azure.com/matiasd0832/NewPracticeProject/_apis/wit/workitems?ids=352,353,354&api-version=6.0"
+      $headers = @{Authorization=("Basic $PAT")}
+      Invoke-RestMethod -Method Get -Headers $headers -Uri $url
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
