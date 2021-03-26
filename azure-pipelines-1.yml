@@ -17,11 +17,18 @@ steps:
     targetType: 'inline'
     script: |
       # Write your PowerShell commands here.
-      $fecha = Get-Date
       $PAT = "vfe5wmddwpun3azwicjnpjna4jampo32hfsx6uqt7h3u3fvmwm4a"
       $url = "https://dev.azure.com/matiasd0832/NewPracticeProject/_apis/wit/workitems?ids=352,353,354&api-version=6.0"
-      $headers = @{Authorization=("Basic $PAT")}
-      Invoke-RestMethod -Method Get -Headers $headers -Uri $url
+      $user = ""
+      $token = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $user, $PAT)))
+
+      $header = @{authorization = "Basic $token"}
+
+      $response = Invoke-RestMethod -Method Get -Headers $header -Uri $url
+
+      #$response | ConvertTo-Json
+
+      $response.value.fields
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
