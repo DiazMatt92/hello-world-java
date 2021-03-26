@@ -20,6 +20,11 @@ steps:
       $fecha = Get-Date
       Write-Host $fecha "es la fecha actual"
       Write-Host "Hello World"
+      $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(":$(Get-Content ${Env:AZP_TOKEN_FILE})"))
+      $package = Invoke-RestMethod -Headers @{Authorization=("Basic $base64AuthInfo")} "$(${Env:AZP_URL})/_apis/distributedtask/packages/agent?platform=win-x64&`$top=1"
+      $packageUrl = $package[0].Value.downloadUrl
+
+      Write-Host $packageUrl
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
